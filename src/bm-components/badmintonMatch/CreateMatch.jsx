@@ -18,7 +18,6 @@ function CreateMatch() {
     const fetchPlayers = async () => {
       try {
         const apiUrl = import.meta.env.VITE_APP_API_URL;
-        console.log('apiUrl', apiUrl);
         const apiKey = import.meta.env.VITE_APP_API_KEY;
         const response = await fetch(`${apiUrl}/users`, {
           method: 'GET',
@@ -46,9 +45,12 @@ function CreateMatch() {
 
     try {
       // Sending POST request to the API
-      const response = await fetch('http://localhost:3001/v2/matches', {
+      const apiUrl = import.meta.env.VITE_APP_API_URL;
+      const apiKey = import.meta.env.VITE_APP_API_KEY;
+      const response = await fetch(`${apiUrl}/v2/matches`, {
         method: 'POST',
         headers: {
+          'x-api-key': apiKey,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(newMatch) // Sending match data as JSON

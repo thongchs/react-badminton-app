@@ -35,11 +35,25 @@ const MatchListPage = () => {
   useEffect(() => {
     const fetchMatches = async () => {
       try {
-        const response = await fetch('http://localhost:3001/v2/matches');
+        const apiUrl = import.meta.env.VITE_APP_API_URL;
+        const apiKey = import.meta.env.VITE_APP_API_KEY;
+        const response = await fetch(`${apiUrl}/v2/matches`, {
+          method: 'GET',
+          headers: {
+            'x-api-key': apiKey,
+            'Content-Type': 'application/json'
+          }
+        });
         const data = await response.json();
 
         if (data.length > 0) {
-          const responseUser = await fetch('http://localhost:3001/users');
+          const responseUser = await fetch(`${apiUrl}/users`, {
+            method: 'GET',
+            headers: {
+              'x-api-key': apiKey,
+              'Content-Type': 'application/json'
+            }
+          });
           const dataUsers = await responseUser.json(); // Fixed: use the correct response for users
           const updatedMatches = data.map((match) => {
             const updatedTeam1Players = match.team1Players.map((player) => {
