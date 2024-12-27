@@ -1,15 +1,15 @@
 // material-ui
-import BadmintonMatch from 'components/badmintonMatch/BadmintonMatch';
+import CreateMatch from 'bm-components/badmintonMatch/CreateMatch';
 
 // project imports
 import MainCard from 'ui-component/cards/MainCard';
 
 // ==============================|| SAMPLE PAGE ||============================== //
 
-const MatchPage = () => (
+const CreateMatchPage = () => (
   <MainCard title="Create Badminton Doubles Match">
-    <BadmintonMatch />
+    <CreateMatch />
   </MainCard>
 );
 
-export default MatchPage;
+export default CreateMatchPage;

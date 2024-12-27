@@ -16,8 +16,13 @@ const UtilsShadow = Loadable(lazy(() => import('views/utilities/Shadow')));
 
 // sample page routing
 const SamplePage = Loadable(lazy(() => import('views/sample-page')));
-const MatchListPage = Loadable(lazy(() => import('views/match-page')));
+// const MatchListPage = Loadable(lazy(() => import('views/bm-pages/match-page/MatchPage')));
 
+import CreateMatchPage from 'views/bm-pages/match-page/CreateMatchPage';
+import ListMatchPage from 'views/bm-pages/match-page/ListMatchPage';
+import MatchPage from 'views/bm-pages/match-page/MatchPage';
+import CreateUserPage from 'views/bm-pages/user-pages/CreateUserPage';
+import ListUserPage from 'views/bm-pages/user-pages/ListUserPage';
 // ==============================|| MAIN ROUTING ||============================== //
 
 const MainRoutes = {
@@ -86,9 +91,27 @@ const MainRoutes = {
       path: 'sample-page',
       element: <SamplePage />
     },
+    // Badminton App
     {
       path: 'matchs',
-      element: <MatchListPage />
+      element: <MatchPage />
+    },
+    {
+      path: 'matchs/create',
+      element: <CreateMatchPage />
+    },
+    {
+      path: 'matchs/list',
+      element: <ListMatchPage />
+    },
+    //USER
+    {
+      path: 'users/create',
+      element: <CreateUserPage />
+    },
+    {
+      path: 'users/list',
+      element: <ListUserPage />
     }
   ]
 };

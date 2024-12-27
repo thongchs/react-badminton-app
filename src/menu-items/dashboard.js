@@ -18,14 +18,6 @@ const dashboard = {
       url: '/dashboard/default',
       icon: icons.IconDashboard,
       breadcrumbs: false
-    },
-    {
-      id: 'default-match',
-      title: 'Match',
-      type: 'item',
-      url: '/matchs',
-      icon: icons.IconDashboard,
-      breadcrumbs: false
     }
   ]
 };

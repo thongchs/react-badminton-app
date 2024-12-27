@@ -9,19 +9,19 @@ export default function componentStyleOverrides(theme) {
         }
       }
     },
-    MuiPaper: {
-      defaultProps: {
-        elevation: 0
-      },
-      styleOverrides: {
-        root: {
-          backgroundImage: 'none'
-        },
-        rounded: {
-          borderRadius: `${theme?.customization?.borderRadius}px`
-        }
-      }
-    },
+    // MuiPaper: {
+    //   defaultProps: {
+    //     elevation: 0
+    //   },
+    //   styleOverrides: {
+    //     root: {
+    //       backgroundImage: 'none'
+    //     },
+    //     rounded: {
+    //       borderRadius: `${theme?.customization?.borderRadius}px`
+    //     }
+    //   }
+    // },
     MuiCardHeader: {
       styleOverrides: {
         root: {
