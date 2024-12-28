@@ -39,8 +39,8 @@ function CreateMatch() {
       const data = await createMatch(newMatch);
       console.log('Match created successfully:', data);
       // Optionally, reset the teams after a successful submission
-      setTeam1({ player1: '', player2: '' });
-      setTeam2({ player1: '', player2: '' });
+      // setTeam1({ player1: '', player2: '' });
+      // setTeam2({ player1: '', player2: '' });
     } catch (error) {
       console.error('Error creating match:', error);
     }

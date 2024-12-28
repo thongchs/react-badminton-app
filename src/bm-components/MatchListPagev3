@@ -1,7 +1,6 @@
-import { Badge, Tab, TablePagination, Tabs } from '@mui/material';
-import { collection, onSnapshot } from 'firebase/firestore';
+import { Badge, Tab, Tabs } from '@mui/material';
+import { fetchMatches } from 'api/http';
 import { useEffect, useState } from 'react';
-import db from '../../firebase';
 import MatchDone from './matches/MatchDone';
 import MatchPlaying from './matches/MatchPlaying';
 import MatchWaiting from './matches/MatchWaiting';
@@ -21,7 +20,7 @@ const BadgeTab = ({ label, badgeContent, badgeColor = 'primary', ...props }) => 
 const MatchListPage = (isPublic) => {
   const [tabValue, setTabValue] = useState(0);
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(500);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
   const [matchesData, setMatchesData] = useState([]); // State to manage matches data
   const handleTabChange = (_, newValue) => setTabValue(newValue);
   const handleChangePage = (_, newPage) => setPage(newPage);
@@ -35,20 +34,15 @@ const MatchListPage = (isPublic) => {
 
   // Fetch sample players from API
   useEffect(() => {
-    onSnapshot(collection(db, 'group-123'), (snapshot) => {
-      const data = snapshot.docs.map((doc) => doc.data());
-      console.log(data);
-      setMatchesData(data);
-    });
-    // const fetchMatch = async () => {
-    //   try {
-    //     const data = await fetchMatches();
-    //     setMatchesData(data);
-    //   } catch (error) {
-    //     console.error('Error fetching:', error);
-    //   }
-    // };
-    // fetchMatch();
+    const fetchMatch = async () => {
+      try {
+        const data = await fetchMatches();
+        setMatchesData(data);
+      } catch (error) {
+        console.error('Error fetching:', error);
+      }
+    };
+    fetchMatch();
   }, []);
 
   const allMatches = matchesData;
@@ -70,7 +64,7 @@ const MatchListPage = (isPublic) => {
       {tabValue === 1 && <MatchPlaying matches={filteredMatches} />}
       {tabValue === 2 && <MatchDone matches={filteredMatches} />}
 
-      <TablePagination
+      {/* <TablePagination
         rowsPerPageOptions={[3, 5, 10]}
         component="div"
         count={allMatches.length}
@@ -78,7 +72,7 @@ const MatchListPage = (isPublic) => {
         page={page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
-      />
+      /> */}
     </>
   );
 };

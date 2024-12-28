@@ -40,12 +40,27 @@ export async function createMatch(newMatch) {
     },
     body: JSON.stringify(newMatch)
   });
-
   const resData = await response.json();
-
   if (!response.ok) {
     throw new Error('Failed to create match data.');
   }
+  return resData;
+}
 
+export async function updateMatchStatus(id, status) {
+  const response = await fetch(`${BASE_URL}/v2/matches/${id}/status`, {
+    method: 'PATCH',
+    headers: {
+      'x-api-key': API_KEY,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      status
+    })
+  });
+  const resData = await response.json();
+  if (!response.ok) {
+    throw new Error('Failed to update match data.');
+  }
   return resData;
 }

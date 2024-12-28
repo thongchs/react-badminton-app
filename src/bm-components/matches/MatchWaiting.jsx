@@ -1,8 +1,8 @@
 import { Avatar, Box, Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import { updateMatchStatus } from 'api/http';
 import User1 from 'assets/images/users/user-round.svg';
 import React from 'react';
 import './MatchTable.css'; // Import the CSS file
-
 const MatchTable = ({ matches }) => (
   <TableContainer className="table-container" component={Paper} sx={{ overflowX: 'auto' }}>
     <Table sx={{ minWidth: 350 }} aria-label="match list table">
@@ -14,7 +14,7 @@ const MatchTable = ({ matches }) => (
       </TableHead>
       <TableBody>
         {matches.map((match, index) => (
-          <React.Fragment key={match.id}>
+          <React.Fragment key={match.matchId}>
             {/* Queue Number */}
             <TableRow>
               <TableCell colSpan={2} align="center">
@@ -69,11 +69,11 @@ const MatchTable = ({ matches }) => (
                   Statistics
                 </Button>
 
-                <Button variant="contained" color="info" onClick={() => alert(`Ending match ${index + 1}`)}>
+                <Button variant="contained" color="info" onClick={() => updateMatchStatus(match.matchId, 'Playing')}>
                   Start
                 </Button>
 
-                <Button variant="contained" color="error" onClick={() => alert(`Ending match ${index + 1}`)}>
+                <Button variant="contained" color="error" onClick={() => updateMatchStatus(match.matchId, 'Delete')}>
                   Delete
                 </Button>
               </TableCell>
