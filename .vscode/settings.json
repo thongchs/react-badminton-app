@@ -2,7 +2,7 @@
   "material-icon-theme.activeIconPack": "nest",
   "eslint.format.enable": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll": "explicit",
+    // "source.fixAll": "explicit",
     "source.organizeImports": "explicit"
   },
   "editor.formatOnSave": true,

@@ -1,0 +1,8 @@
+.table-container td {
+  padding-top: 9px; /* Set padding to 0 */
+  padding-bottom: 9px; /* Set padding to 0 */
+}
+
+.table-container button {
+  margin: 5px; /* Set margin for all buttons inside the table */
+}

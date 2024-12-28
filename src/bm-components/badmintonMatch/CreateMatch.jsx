@@ -1,4 +1,5 @@
 import { Box, Button, Container, Grid } from '@mui/material';
+import { createMatch, fetchMembers } from 'api/http';
 import { useEffect, useState } from 'react';
 import Team from './Team';
 // Main Component
@@ -17,16 +18,7 @@ function CreateMatch() {
   useEffect(() => {
     const fetchPlayers = async () => {
       try {
-        const apiUrl = import.meta.env.VITE_APP_API_URL;
-        const apiKey = import.meta.env.VITE_APP_API_KEY;
-        const response = await fetch(`${apiUrl}/users`, {
-          method: 'GET',
-          headers: {
-            'x-api-key': apiKey,
-            'Content-Type': 'application/json'
-          }
-        });
-        const data = await response.json();
+        const data = await fetchMembers();
         const sortedPlayers = [...data].sort((a, b) => a.name.localeCompare(b.name));
         setPlayerList(sortedPlayers); // Set fetched players data
       } catch (error) {
@@ -44,27 +36,11 @@ function CreateMatch() {
     };
 
     try {
-      // Sending POST request to the API
-      const apiUrl = import.meta.env.VITE_APP_API_URL;
-      const apiKey = import.meta.env.VITE_APP_API_KEY;
-      const response = await fetch(`${apiUrl}/v2/matches`, {
-        method: 'POST',
-        headers: {
-          'x-api-key': apiKey,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(newMatch) // Sending match data as JSON
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        console.log('Match created successfully:', data);
-        // Optionally, reset the teams after a successful submission
-        setTeam1({ player1: '', player2: '' });
-        setTeam2({ player1: '', player2: '' });
-      } else {
-        console.error('Failed to create match:', response.statusText);
-      }
+      const data = await createMatch(newMatch);
+      console.log('Match created successfully:', data);
+      // Optionally, reset the teams after a successful submission
+      setTeam1({ player1: '', player2: '' });
+      setTeam2({ player1: '', player2: '' });
     } catch (error) {
       console.error('Error creating match:', error);
     }

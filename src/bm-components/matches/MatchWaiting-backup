@@ -4,7 +4,7 @@ import React from 'react';
 import './MatchTable.css'; // Import the CSS file
 
 const MatchTable = ({ matches }) => (
-  <TableContainer className="table-container" component={Paper} sx={{ overflowX: 'auto' }}>
+  <TableContainer component={Paper} sx={{ overflowX: 'auto' }}>
     <Table sx={{ minWidth: 350 }} aria-label="match list table">
       <TableHead>
         <TableRow>
@@ -67,14 +67,6 @@ const MatchTable = ({ matches }) => (
               <TableCell colSpan={2} align="center">
                 <Button variant="contained" color="primary" onClick={() => alert(`Ending match ${index + 1}`)}>
                   Statistics
-                </Button>
-
-                <Button variant="contained" color="info" onClick={() => alert(`Ending match ${index + 1}`)}>
-                  Start
-                </Button>
-
-                <Button variant="contained" color="error" onClick={() => alert(`Ending match ${index + 1}`)}>
-                  Delete
                 </Button>
               </TableCell>
             </TableRow>

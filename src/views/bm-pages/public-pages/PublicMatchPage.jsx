@@ -5,10 +5,10 @@ import MainCard from 'ui-component/cards/MainCard';
 
 // ==============================|| SAMPLE PAGE ||============================== //
 
-const ListMatchPage = () => (
+const PublicMatchPage = () => (
   <MainCard title="Match Dashboard">
     <MatchListPage />
   </MainCard>
 );
 
-export default ListMatchPage;
+export default PublicMatchPage;
